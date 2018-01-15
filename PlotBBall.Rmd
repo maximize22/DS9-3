@@ -1,0 +1,24 @@
+---
+title: "Plotly Baseball wins"
+author: "Larry Colucci"
+date: "January 14, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## An Interactive Plot with Plotly and R Markdownn
+
+This is an R Markdown document, with a chart showing the win by year for the baseball franchises in the AL Central division.
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(plotly)
+library(Lahman)
+tt <- subset(Teams, Teams$franchID %in% c('CLE','CHW','DET','KCR','MIN'))
+p <- plot_ly(tt, x = ~ yearID, y = ~W, color = ~franchID, type = 'scatter', mode = 'lines')
+p
+```
+
